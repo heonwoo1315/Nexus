@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Nexus
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL
+    driver-class-name: org.h2.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.Nexus.domain
+  configuration:
+    map-underscore-to-camel-case: true
