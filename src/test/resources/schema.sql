@@ -8,3 +8,11 @@ CREATE TABLE posts (
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 기존 schema.sql에 추가
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL UNIQUE, -- 로그인 ID
+    password VARCHAR(100) NOT NULL,
+    username VARCHAR(50) NOT NULL
+);
