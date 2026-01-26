@@ -6,6 +6,8 @@ CREATE TABLE posts (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(225) NOT NULL,
     content TEXT,
+    writer_id VARCHAR(50) NOT NULL, -- 작성자 ID 추가
+    hits INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
