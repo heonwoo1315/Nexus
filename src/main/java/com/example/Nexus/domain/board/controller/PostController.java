@@ -20,14 +20,10 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<Void> createPost(@RequestBody Post post, @LoginUser User user) {
-        // 1. 로그인하지 않은 유저가 접근할 경우의 처리 (인프라/보안 로직)
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+    public ResponseEntity<Void> createPost(@RequestBody Post post) {
 
         // 2. 게시글 객체에 작성자 정보 설정 (비즈니스 연결)
-        post.setWriterId(user.getUserId());
+        post.setWriterId("test_user");
 
         // 3. 저장
         postService.write(post);
@@ -48,14 +44,16 @@ public class PostController {
 
     @PutMapping("/{id}")
     public void updatePost(@PathVariable(name = "id") Long id,
-                           @RequestBody Post post,
-                           @LoginUser User user) {
-        postService.updatePost(id, post, user.getUserId());
+                           @RequestBody Post post
+            /* @LoginUser User user 지우기 */) {
+        // user.getUserId() 대신 "test_user"를 직접 넣어줍니다.
+        postService.updatePost(id, post, "test_user");
     }
 
     @DeleteMapping("/{id}")
-    public void deletePost(@PathVariable(name = "id") Long id,
-                           @LoginUser User user) {
-        postService.deletePost(id, user.getUserId());
+    public void deletePost(@PathVariable(name = "id") Long id
+            /* @LoginUser User user 지우기 */) {
+        // user.getUserId() 대신 "test_user"를 직접 넣어줍니다.
+        postService.deletePost(id, "test_user");
     }
 }
