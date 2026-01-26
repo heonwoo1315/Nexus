@@ -1,4 +1,4 @@
-package com.example.Nexus.domain.board.dto.object;
+package com.example.Nexus.domain.login.dto.object;
 
 import lombok.*;
 
