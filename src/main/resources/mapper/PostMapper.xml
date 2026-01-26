@@ -4,7 +4,45 @@
 <mapper namespace="com.example.Nexus.domain.board.mapper.PostMapper">
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO posts (title, content, created_at)
-        VALUES (#{title}, #{content}, NOW()) </insert>
+        INSERT INTO posts (title, content, writer_id)
+        VALUES (#{title}, #{content}, #{writerId})
+    </insert>
+
+    <select id="findAll" resultType="com.example.Nexus.domain.board.dto.object.Post">
+        SELECT
+            id,
+            title,
+            content,
+            writer_id AS writerId,
+            created_at AS createdAt,
+            hits
+        FROM posts
+        ORDER BY id DESC
+            LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="findById" resultType="com.example.Nexus.domain.board.dto.object.Post">
+        SELECT id, title, content, writer_id AS writerId, created_at AS createdAt, hits
+        FROM posts
+        WHERE id = #{id}
+    </select>
+
+    <update id = "updateHits">
+        UPDATE posts
+        SET hits = hits + 1
+        WHERE id = #{id}
+    </update>
+
+    <update id = "update">
+        UPDATE posts
+        SET title = #{title}, content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <delete id = "delete">
+        DELETE FROM posts WHERE id = #{id}
+    </delete>
+
+
 
 </mapper>
