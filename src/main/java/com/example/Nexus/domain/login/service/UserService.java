@@ -1,6 +1,6 @@
 package com.example.Nexus.domain.login.service;
 
-import com.example.Nexus.domain.board.dto.object.User;
+import com.example.Nexus.domain.login.dto.object.User;
 import com.example.Nexus.domain.login.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

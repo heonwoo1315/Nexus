@@ -1,6 +1,6 @@
 package com.example.Nexus.domain.board.service;
 
-import com.example.Nexus.domain.board.dto.object.User;
+import com.example.Nexus.domain.login.dto.object.User;
 import com.example.Nexus.domain.login.mapper.UserMapper;
 import com.example.Nexus.domain.login.service.UserService;
 import org.junit.jupiter.api.extension.ExtendWith;

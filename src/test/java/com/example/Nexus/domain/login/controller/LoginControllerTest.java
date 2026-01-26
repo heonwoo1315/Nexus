@@ -1,6 +1,6 @@
 package com.example.Nexus.domain.login.controller;
 
-import com.example.Nexus.domain.board.dto.object.User;
+import com.example.Nexus.domain.login.dto.object.User;
 import com.example.Nexus.domain.login.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

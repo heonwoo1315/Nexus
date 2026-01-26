@@ -1,6 +1,6 @@
 package com.example.Nexus.domain.login.mapper;
 
-import com.example.Nexus.domain.board.dto.object.User;
+import com.example.Nexus.domain.login.dto.object.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
