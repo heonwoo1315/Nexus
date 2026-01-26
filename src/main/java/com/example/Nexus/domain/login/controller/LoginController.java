@@ -1,6 +1,6 @@
 package com.example.Nexus.domain.login.controller;
 
-import com.example.Nexus.domain.board.dto.object.User;
+import com.example.Nexus.domain.login.dto.object.User;
 import com.example.Nexus.domain.login.dto.request.LoginRequest;
 import com.example.Nexus.domain.login.service.UserService;
 import jakarta.servlet.http.HttpSession;
