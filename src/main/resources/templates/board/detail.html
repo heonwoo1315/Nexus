@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.title}">게시글 상세 - Nexus</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+</head>
+<body>
+<div style="padding: 20px; max-width: 800px; margin: auto;">
+    <h1 th:text="${post.title}">제목</h1>
+
+    <div style="border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; color: #666;">
+        <span>작성자: <b th:text="${post.writerId}">작성자</b></span> |
+        <span>조회수: <span th:text="${post.hits}">0</span></span>
+    </div>
+
+    <div style="min-height: 300px; line-height: 1.6; white-space: pre-wrap;" th:text="${post.content}">
+        내용이 여기에 출력됩니다.
+    </div>
+
+    <hr>
+
+    <div style="margin-top: 20px;">
+        <a th:href="@{/posts}" class="btn" style="background-color: #6c757d;">목록으로</a>
+
+        <button type="button" class="btn" style="background-color: #007bff;"
+                th:onclick="|location.href='@{/posts/edit/{id}(id=${post.id})}'|">수정</button>
+        <button type="button" class="btn" style="background-color: #dc3545;"
+                th:onclick="deletePost([[${post.id}]])">삭제</button>
+    </div>
+</div>
+
+<script th:src="@{/js/board.js}"></script>
+</body>
+</html>

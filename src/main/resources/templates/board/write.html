@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기 - Nexus</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+</head>
+<body>
+<div style="padding: 20px; max-width: 800px; margin: auto;">
+    <h1>새 글 작성</h1>
+    <form id="postForm">
+        <div class="form-group">
+            <label for="title">제목 (5글자 이상)</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="content" name="content"></textarea>
+        </div>
+        <button type="button" class="btn" onclick="submitPost()">등록하기</button>
+        <a th:href="@{/posts}" style="margin-left: 10px;">취소</a>
+    </form>
+</div>
+<script th:src="@{/js/board.js}"></script>
+</body>
+</html>

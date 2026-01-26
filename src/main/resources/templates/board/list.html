@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nexus 게시판</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+</head>
+<body>
+<div style="padding: 20px;">
+    <h1>게시글 목록</h1>
+    <div style="margin-bottom: 10px; text-align: right;">
+        <a th:href="@{/posts/write}" class="btn">글쓰기</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}">1</td>
+            <td>
+                <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}">제목</a>
+            </td>
+            <td th:text="${post.writerId}">작성자</td>
+            <td th:text="${post.hits}">0</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
