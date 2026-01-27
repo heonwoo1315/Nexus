@@ -6,13 +6,16 @@ spring:
       mode: always
   datasource:
     # DB가 닫혀도 메모리 데이터를 유지하도록 설정
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-    h2:
-      console:
-        enabled: true # 웹에서 DB를 확인할 수 있게 콘솔 활성화
+    url: jdbc:mysql://nexus-db.c10skc0kg6a5.ap-northeast-2.rds.amazonaws.com:3306/nexus_db?createDatabaseIfNotExist=true&serverTimezone=Asia/Seoul
+    username: admin
+    password: dhkdxmsxmswkdrn
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # 처음 실행 시 테이블을 자동으로 만들어줍니다.
+    properties:
+      hibernate:
+        format_sql: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.Nexus.domain
