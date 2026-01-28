@@ -49,11 +49,16 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            # 1. 최신 이미지 가져오기
             docker pull ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
+            
+            # 2. 기존 컨테이너 중지 및 삭제 (실패해도 계속 진행)
             docker stop nexus-server || true
             docker rm nexus-server || true
-            # - e 옵션을 통해 깃허브의 비밀값을 컨테이너 내부 환경 변수로 주입
-            docker run -d -p 8080:8080 \
-            -- name nexus-server \
-            -e RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} \
-            ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
+            
+            # 3. 새 컨테이너 실행 (옵션 순서와 줄바꿈에 주의하세요!)
+            docker run -d \
+              -p 8080:8080 \
+              --name nexus-server \
+              -e RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} \
+              ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
