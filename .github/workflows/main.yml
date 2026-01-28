@@ -52,4 +52,8 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
             docker stop nexus-server || true
             docker rm nexus-server || true
-            docker run -d -p 8080:8080 --name nexus-server ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
+            # - e 옵션을 통해 깃허브의 비밀값을 컨테이너 내부 환경 변수로 주입
+            docker run -d -p 8080:8080 \
+            -- name nexus-server \
+            -e RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} \
+            ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest

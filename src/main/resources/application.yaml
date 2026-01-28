@@ -8,7 +8,7 @@ spring:
     # DB가 닫혀도 메모리 데이터를 유지하도록 설정
     url: jdbc:mysql://nexus-db.c10skc0kg6a5.ap-northeast-2.rds.amazonaws.com:3306/nexus_db?createDatabaseIfNotExist=true&serverTimezone=Asia/Seoul
     username: admin
-    password: dhkdxmsxmswkdrn
+    password: ${RDS_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
