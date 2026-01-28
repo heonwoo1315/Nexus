@@ -57,4 +57,4 @@ jobs:
             docker rm nexus-server || true
             
             # 3. 새 컨테이너 실행 (옵션 순서와 줄바꿈에 주의하세요!)
-            docker run -d -p 8080:8080 --name nexus-server -e RDS_PASSWORD=${{ secrets.RDS_PASSWORD }} ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
+            docker run -d -p 8080:8080 --name nexus-server ${{ secrets.DOCKER_USERNAME }}/nexus-app:latest
